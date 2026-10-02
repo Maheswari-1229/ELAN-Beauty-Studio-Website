@@ -1,15 +1,17 @@
-# [Project name]
+# ÉLAN Beauty Studio Website
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A responsive, single-page beauty salon website and reusable client template for ÉLAN Beauty Studio.
 
 ## Run & Operate
 
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/elan-beauty-studio run dev` — run the salon website
+- `pnpm --filter @workspace/elan-beauty-studio run typecheck` — typecheck the website
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- The salon website is frontend-only; its enquiry form validates and displays a local confirmation but does not send or store submissions.
 
 ## Stack
 
@@ -22,15 +24,21 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/elan-beauty-studio/src/data/studio.ts` — client name, tagline, colors, contact details, links, opening hours, services, prices, testimonials, and image paths
+- `artifacts/elan-beauty-studio/src/components/` — navigation, page sections, gallery/lightbox, and interactive components
+- `artifacts/elan-beauty-studio/public/images/` — generated sample salon and beauty photography; replace these files or update their paths in `studio.ts`
+- `artifacts/elan-beauty-studio/src/index.css` — responsive layout, theme tokens, animation, and accessibility styles
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Keep client-specific content and data centralized in `src/data/studio.ts` for quick freelance reuse.
+- Keep the enquiry form local-only until a salon chooses its booking or CRM service.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Single-page salon showcase with service filters, bridal packages, before/after slider, filtered gallery and keyboard-accessible lightbox.
+- Appointment request form with browser validation and a clear local-only confirmation.
+- Responsive navigation, testimonial carousel, contact and social links, and reduced-motion support.
 
 ## User preferences
 
